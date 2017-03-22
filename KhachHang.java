@@ -2,13 +2,14 @@ package hueic.edu.vn.model;
 
 import java.io.Serializable;
 
-public class KhachHang implements Serializable {
-	private String ma;
+public class KhachHang implements Serializable,Comparable<KhachHang> {
+	private int ma;
 	private String ten;
-	public String getMa() {
+	private String phone;
+	public int getMa() {
 		return ma;
 	}
-	public void setMa(String ma) {
+	public void setMa(int ma) {
 		this.ma = ma;
 	}
 	public String getTen() {
@@ -17,16 +18,27 @@ public class KhachHang implements Serializable {
 	public void setTen(String ten) {
 		this.ten = ten;
 	}
-	public KhachHang(String ma, String ten) {
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public KhachHang(int ma, String ten, String phone) {
 		super();
 		this.ma = ma;
 		this.ten = ten;
+		this.phone = phone;
 	}
 	public KhachHang() {
 		super();
 	}
 	@Override
 	public String toString() {
-		return this.ma+"\t"+this.ten;
+		return this.ma+"\t"+this.ten+"\t"+this.phone;
+	}
+	@Override
+	public int compareTo(KhachHang o) {//Sắp xếp
+		return this.phone.compareToIgnoreCase(o.phone);
 	}
 }
